@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>Giacomo Boscaini-Gilroy</title>
+  <meta name='viewport' content='initial-scale=1' />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,bold" rel="stylesheet">
+  <link href="./css/style-chosen.css" rel="stylesheet" />
+
+<style>
+
+  body {
+    font-family: 'Open Sans';
+  }
+
+  h1, p {
+    text-align: center;
+  }
+
+  p {
+    margin-top: 50px;
+  }
+
+  svg {
+    width: 100%;
+    height: 700px;
+    margin: 0 auto;
+    display: block;
+  }
+
+  text {
+    text-anchor: middle;
+    alignment-baseline: middle;
+  }
+
+</style>
+
+<!-- <script src="https://cdn.ons.gov.uk/vendor/d3/4.2.7/d3.min.js"></script> -->
+<script src="lib/d3.min.js"></script>
+
+<body>
+  <h1>This page is unfinished</h1>
+  <p>Pick a path</p>
+  <svg id="paths">
+  </svg>
+</body>
+
+<script>
+
+  var svg = d3.select("#paths");
+  var svgMidpoint = parseInt(svg.style("width"))/2;
+  var data = [100,-100,100,-100];
+  var buttonsData = [
+    {
+      text: "Data",
+      x: -100,
+      href: "data.html",
+      image: "dataimg.png"
+    },
+    {
+      text: "Art",
+      x: 100,
+      href: "art.html",
+      image: "artimg.jpg"
+    }
+  ];
+  var circleId = 0;
+
+
+
+  // run it
+  createButtons();
+  createCircles();
+  data.forEach(function(item, i) { moveCircleToStartByNum(i); });
+  setInterval(repeat, 2000);
+  addSvgMouseBehaviour();
+
+
+  function createButtons() {
+
+    // create buttons
+    var links = svg.selectAll("a")
+      .data(buttonsData)
+      .enter()
+      // create a containers
+      .append("a")
+      .attr("href", function(d) { return d.href })
+
+    // put text in a containers
+    links.append("text")
+      .attr("x", function(d) { return d.x + svgMidpoint })
+      .attr("y", 250)
+      .attr("dy", "0.4em")
+      .text(function(d) { return d.text })
+
+    // add boxes below
+    var rectWidth = 150
+    links.append("image")
+      .attr("id", function(d,i) { return "link-rect" + i })
+      .classed("link-rect", true)
+      .attr("x", function(d) { return d.x + svgMidpoint - rectWidth/2})
+      .attr("y", 270)
+      .attr("width", rectWidth)
+      .attr("height", 0)
+      .attr("href", function(d) { return d.image })
+      .attr("preserveAspectRatio", "xMidYMax slice") // xMidYMin can work too
+      // .attr("fill", function(d,i) { return "url(#img" + i + ")" } );
+  }
+
+  function createCircles() {
+
+    // create circles
+    circles = svg.selectAll("circle")
+      .data(data)
+      .enter()
+      .append("circle")
+      .attr("id", function(d,i) { return "circle" + i })
+      .attr("r", 4)
+      .attr("opacity", 1)
+
+  } // end create
+
+
+  function moveCircleToStart() {
+    moveCircleToStartByNum(circleId);
+  }
+
+  function moveCircleToStartByNum(num) {
+    d3.select("#circle"+num)
+      .attr("cx", svgMidpoint)
+      .attr("cy", 10);
+  }
+
+  function transitionCircle() {
+    var duration = 8000;
+
+    d3.select("#circle"+circleId)
+      .transition()
+      .duration(7200)
+      .on("end", function() {
+        d3.select("#circle"+circleId)
+          .transition()
+          .duration(700)
+          .attr("opacity", 0);
+      });
+
+    d3.select("#circle"+circleId)
+      .transition("tx")
+      .ease(d3.easeCubicInOut)
+      .duration(duration)
+      .attr("cx", function(d) { return svgMidpoint + d } )
+      .on("end", function() {
+        d3.select(this)
+          .attr("cx", svgMidpoint)
+          .transition()
+          .duration(1000)
+          .attr("opacity", 1);
+      });
+
+    d3.select("#circle"+circleId)
+      .transition("ty")
+      .ease(d3.easeLinear)
+      .duration(duration)
+      .attr("cy", 250)
+      .on("end", function() {
+        d3.select(this)
+          .attr("cy", 10);
+      });
+
+  }
+
+  function repeat() {
+    transitionCircle();
+    // moveCircleToStart();
+    circleId = (circleId + 1) % data.length;
+
+  }
+
+  function addSvgMouseBehaviour() {
+
+    var coordinates = [];
+    var maxRectHeight = 120;
+    var linkRect0 = d3.select("#link-rect0")
+    var linkRect1 = d3.select("#link-rect1")
+
+    svg.on("mousemove", function(d) {
+      coordinates = d3.mouse(this);
+      var x = coordinates[0];
+      var y = coordinates[1];
+      var distanceFromButton1 = Math.sqrt( (x-(svgMidpoint-100))*(x-(svgMidpoint-100)) + (y-330)*(y-330) );
+      var distanceFromButton2 = Math.sqrt( (x-(svgMidpoint+100))*(x-(svgMidpoint+100)) + (y-330)*(y-330) );
+      linkRect0.attr("height", Math.min( Math.max(0, ((maxRectHeight+30)/6)*(distanceFromButton2 - distanceFromButton1)/distanceFromButton1 - 15 ), maxRectHeight ))
+      linkRect1.attr("height", Math.min( Math.max(0, ((maxRectHeight+30)/6)*(distanceFromButton1 - distanceFromButton2)/distanceFromButton2 - 15 ), maxRectHeight ))
+      // console.log(distanceFromButton1, distanceFromButton2)
+
+    })
+  }
+
+
+
+</script>
