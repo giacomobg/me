@@ -10,22 +10,37 @@
 
 <style>
 
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
   body {
     font-family: 'Open Sans';
+    display: inline-block;
+    margin: 0px;
   }
 
   h1, p {
-    text-align: center;
+    float: left;
+    margin: 15px 0px 0px 30px;
+    font-size: 14pt;
   }
 
-  p {
-    margin-top: 50px;
+  a > p {
+    margin: 5px 0px 0px 30px;
+    display: inline-block;
+  }
+
+  row {
+    clear: both;
   }
 
   svg {
-    width: 100%;
-    height: 700px;
-    margin: 0 auto;
+    clear: both;
+    width: 30px;
+    height: 1000px;
+    /* margin: 0 auto; */
     display: block;
   }
 
@@ -40,10 +55,15 @@
 <script src="lib/d3.min.js"></script>
 
 <body>
-  <h1>This page is unfinished</h1>
-  <p>Pick a path</p>
+  <a href="index.html">
+    <p style="font-size: 30px;">←</p>
+  </a>
+  <div class="row">
+    <p>I find and communicate stories in data</p>
+  </div>
   <svg id="paths">
   </svg>
+  <p>Office for National Statistics</p>
 </body>
 
 <script>
@@ -66,6 +86,8 @@
     }
   ];
   var circleId = 0;
+  var firstAnimation = [true, true, true, true];
+
 
 
 
@@ -73,7 +95,7 @@
   createButtons();
   createCircles();
   data.forEach(function(item, i) { moveCircleToStartByNum(i); });
-  setInterval(repeat, 2000);
+  setInterval(repeat, 4000);
   addSvgMouseBehaviour();
 
 
@@ -117,7 +139,7 @@
       .append("circle")
       .attr("id", function(d,i) { return "circle" + i })
       .attr("r", 4)
-      .attr("opacity", 1)
+      .attr("opacity", 0)
 
   } // end create
 
@@ -133,46 +155,60 @@
   }
 
   function transitionCircle() {
-    var duration = 8000;
+    var duration = 16000;
+    var fadeOutDelay = 800;
 
+    // fade out
     d3.select("#circle"+circleId)
-      .transition()
-      .duration(7200)
+      .transition("opacity")
+      .duration(duration - fadeOutDelay)
       .on("end", function() {
-        d3.select("#circle"+circleId)
+        d3.select(this)
           .transition()
-          .duration(700)
+          .duration(fadeOutDelay)
           .attr("opacity", 0);
       });
 
-    d3.select("#circle"+circleId)
-      .transition("tx")
-      .ease(d3.easeCubicInOut)
-      .duration(duration)
-      .attr("cx", function(d) { return svgMidpoint + d } )
-      .on("end", function() {
-        d3.select(this)
-          .attr("cx", svgMidpoint)
-          .transition()
-          .duration(1000)
-          .attr("opacity", 1);
-      });
+    // d3.select("#circle"+circleId)
+    //   .transition("tx")
+    //   .ease(d3.easeCubicInOut)
+    //   .duration(duration)
+    //   .attr("cx", function(d) { return svgMidpoint + d } )
+    //   .on("end", function() {
+    //     d3.select(this)
+    //       .attr("cx", svgMidpoint)
+    //       .transition()
+    //       .duration(1000)
+    //       .attr("opacity", 1);
+    //   });
 
+    // transition y
     d3.select("#circle"+circleId)
       .transition("ty")
       .ease(d3.easeLinear)
       .duration(duration)
-      .attr("cy", 250)
+      .attr("cy", 500)
       .on("end", function() {
         d3.select(this)
-          .attr("cy", 10);
+          .attr("cy", 10)
+          .transition()
+          .duration(1000)
+          .attr("opacity", 1);
       });
 
   }
 
   function repeat() {
     transitionCircle();
-    // moveCircleToStart();
+
+    if (firstAnimation[circleId]) {
+      d3.select("#circle" + circleId)
+        .transition()
+        .duration(700)
+        .attr("opacity", 1);
+      firstAnimation[circleId] = false;
+    }
+
     circleId = (circleId + 1) % data.length;
 
   }
