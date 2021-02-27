@@ -18,12 +18,20 @@
   body {
     font-family: 'Open Sans';
     display: inline-block;
-    margin: 0px;
+    margin-left: 15px;
   }
 
   h3, p {
     float: left;
-    margin: 15px 0px 0px 0px;
+    /* margin: 10px 0px 10px 5px; */
+  }
+
+  h3 {
+    margin-left: 13px;
+  }
+
+  h3 ~ p {
+    margin-left: 13px;
   }
 
   h3 {
@@ -31,6 +39,7 @@
   }
 
   p {
+    margin-top: 0px;
     font-size: 12pt;
   }
 
@@ -40,7 +49,7 @@
   }
 
   a > p {
-    margin: 5px 0px 0px 30px;
+    margin: 5px 0px 0px 15px;
     display: inline-block;
   }
 
@@ -76,6 +85,7 @@
   }
 
   .row > * {
+    margin: 10px;
     flex: 1 1 0;
   }
   .row :first-child {
@@ -83,6 +93,8 @@
   }
 
   svg {
+    display: none;
+
     float: left;
     /* clear: both; */
     width: 30px;
@@ -105,9 +117,9 @@
   <a href="index.html">
     <p style="font-size: 30px;">←</p>
   </a>
-  <div class="row">
+  <!-- <div class="row">
     <p class="presvg">I find and communicate stories in data</p>
-  </div>
+  </div> -->
 
   <div class="container">
     <svg id="paths">
@@ -115,27 +127,29 @@
     <div class="flex-container">
       <h3>Office for National Statistics</h3>
 
+      <p>Since August 2019 I have been finding and communicating stories in government statistics in the data visualisation team.</p>
+
       <div class="row">
         <div class="column">
-          <p>We make statistics accessible to the general public with engaging interactive content...</p>
+          <p>We make statistics accessible with engaging interactive content...</p>
         </div>
         <div class="column">
-          <a href="https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/articles/comparisonsofallcausemortalitybetweeneuropeancountriesandregions/januarytojune2020">
-            <img src="dataimg.png" width="100%"></img>
+          <a target="_blank" rel="noopener noreferrer" href="https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/articles/comparisonsofallcausemortalitybetweeneuropeancountriesandregions/januarytojune2020">
+            <img src="europeanmortality.png" width="100%"></img>
           </a>
         </div>
         <div class="column">
-          <a href="">
+          <a target="_blank" rel="noopener noreferrer" href="https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/articles/populationprofilesforlocalauthoritiesinengland/2020-12-14">
             <img src="popprofiles.png" width="100%"></img>
           </a>
         </div>
         <div class="column">
-          <a href="https://www.ons.gov.uk/peoplepopulationandcommunity/healthandsocialcare/causesofdeath/articles/deathsduetocovid19interactivemap/2021-02-25">
-            <img src="mortality.png" width="100%"></img>
+          <a target="_blank" rel="noopener noreferrer" href="https://www.ons.gov.uk/peoplepopulationandcommunity/healthandsocialcare/causesofdeath/articles/deathsduetocovid19interactivemap/2021-02-25">
+            <img src="localcoviddeaths.png" width="100%"></img>
           </a>
         </div>
         <!-- <div class="column">
-          <a href="https://giacomobg.github.io/onshhcomp/map/">
+          <a target="_blank" rel="noopener noreferrer" href="https://giacomobg.github.io/onshhcomp/map/">
             <img src="householdcomposition.png" width="100%"></img>
           </a>
         </div> -->
@@ -143,20 +157,20 @@
 
       <div class="row">
         <div class="column">
-          <p>...and by making ordinary charts more understandable.</p>
+          <p>...and clear, well-explained graphs.</p>
         </div>
         <div class="column">
-          <a href="https://www.ons.gov.uk/economy/nationalaccounts/balanceofpayments/articles/ukforeigndirectinvestmenttrendsandanalysis/november2020">
+          <a target="_blank" rel="noopener noreferrer" href="https://www.ons.gov.uk/economy/nationalaccounts/balanceofpayments/articles/ukforeigndirectinvestmenttrendsandanalysis/november2020">
             <img src="bump.png" width="100%"></img>
           </a>
         </div>
         <div class="column">
-          <a href="https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/articles/recenttrendsinsuicidedeathoccurrencesinenglandandwalesbetween2001and2018/2020-12-08">
+          <a target="_blank" rel="noopener noreferrer" href="https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/articles/recenttrendsinsuicidedeathoccurrencesinenglandandwalesbetween2001and2018/2020-12-08">
             <img src="suicides.png" width="100%"></img>
           </a>
         </div>
         <div class="column">
-          <a href="https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/ageing/articles/livinglonger/implicationsofchildlessnessamongtomorrowsolderpopulation">
+          <a target="_blank" rel="noopener noreferrer" href="https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/ageing/articles/livinglonger/implicationsofchildlessnessamongtomorrowsolderpopulation">
             <img src="childlesswomen.png" width="100%"></img>
           </a>
         </div>
