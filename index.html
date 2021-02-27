@@ -66,6 +66,7 @@
     }
   ];
   var circleId = 0;
+  var firstAnimation = [true, true, true, true];
 
 
 
@@ -117,7 +118,7 @@
       .append("circle")
       .attr("id", function(d,i) { return "circle" + i })
       .attr("r", 4)
-      .attr("opacity", 1)
+      .attr("opacity", 0)
 
   } // end create
 
@@ -134,12 +135,14 @@
 
   function transitionCircle() {
     var duration = 8000;
-
+    console.log(circleId)
     d3.select("#circle"+circleId)
       .transition()
       .duration(7200)
       .on("end", function() {
-        d3.select("#circle"+circleId)
+        console.log('transition opacity to 0')
+
+        d3.select(this)
           .transition()
           .duration(700)
           .attr("opacity", 0);
@@ -172,6 +175,14 @@
 
   function repeat() {
     transitionCircle();
+    if (firstAnimation[circleId]) {
+      d3.select("#circle" + circleId)
+        .transition()
+        .duration(700)
+        .attr("opacity", 1);
+      firstAnimation[circleId] = false;
+    }
+
     // moveCircleToStart();
     circleId = (circleId + 1) % data.length;
 
