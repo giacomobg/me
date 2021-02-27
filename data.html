@@ -21,10 +21,22 @@
     margin: 0px;
   }
 
-  h1, p {
+  h3, p {
     float: left;
-    margin: 15px 0px 0px 30px;
+    margin: 15px 0px 0px 0px;
+  }
+
+  h3 {
     font-size: 14pt;
+  }
+
+  p {
+    font-size: 12pt;
+  }
+
+  .column > img {
+    /* display: inline-block; */
+    float: right;
   }
 
   a > p {
@@ -32,16 +44,51 @@
     display: inline-block;
   }
 
-  row {
+  .presvg {
+    /* clear: both; */
+    /* display: block; */
+    margin-left: 30px;
+    margin-bottom: 30px;
+    font-size: 14pt;
+  }
+
+  .row {
     clear: both;
   }
 
+  /* .column {
+    float: left;
+    width: 30%;
+  } */
+
+  .container {
+    float: left;
+  }
+
+  .flex-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .row {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .row > * {
+    flex: 1 1 0;
+  }
+  .row :first-child {
+    flex: 1 1 0;
+  }
+
   svg {
-    clear: both;
+    float: left;
+    /* clear: both; */
     width: 30px;
     height: 1000px;
     /* margin: 0 auto; */
-    display: block;
+    /* display: inline-block; */
   }
 
   text {
@@ -59,11 +106,65 @@
     <p style="font-size: 30px;">←</p>
   </a>
   <div class="row">
-    <p>I find and communicate stories in data</p>
+    <p class="presvg">I find and communicate stories in data</p>
   </div>
-  <svg id="paths">
-  </svg>
-  <p>Office for National Statistics</p>
+
+  <div class="container">
+    <svg id="paths">
+    </svg>
+    <div class="flex-container">
+      <h3>Office for National Statistics</h3>
+
+      <div class="row">
+        <div class="column">
+          <p>We make statistics accessible to the general public with engaging interactive content...</p>
+        </div>
+        <div class="column">
+          <a href="https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/articles/comparisonsofallcausemortalitybetweeneuropeancountriesandregions/januarytojune2020">
+            <img src="dataimg.png" width="100%"></img>
+          </a>
+        </div>
+        <div class="column">
+          <a href="">
+            <img src="popprofiles.png" width="100%"></img>
+          </a>
+        </div>
+        <div class="column">
+          <a href="https://www.ons.gov.uk/peoplepopulationandcommunity/healthandsocialcare/causesofdeath/articles/deathsduetocovid19interactivemap/2021-02-25">
+            <img src="mortality.png" width="100%"></img>
+          </a>
+        </div>
+        <!-- <div class="column">
+          <a href="https://giacomobg.github.io/onshhcomp/map/">
+            <img src="householdcomposition.png" width="100%"></img>
+          </a>
+        </div> -->
+      </div>
+
+      <div class="row">
+        <div class="column">
+          <p>...and by making ordinary charts more understandable.</p>
+        </div>
+        <div class="column">
+          <a href="https://www.ons.gov.uk/economy/nationalaccounts/balanceofpayments/articles/ukforeigndirectinvestmenttrendsandanalysis/november2020">
+            <img src="bump.png" width="100%"></img>
+          </a>
+        </div>
+        <div class="column">
+          <a href="https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/articles/recenttrendsinsuicidedeathoccurrencesinenglandandwalesbetween2001and2018/2020-12-08">
+            <img src="suicides.png" width="100%"></img>
+          </a>
+        </div>
+        <div class="column">
+          <a href="https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/ageing/articles/livinglonger/implicationsofchildlessnessamongtomorrowsolderpopulation">
+            <img src="childlesswomen.png" width="100%"></img>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
 </body>
 
 <script>
