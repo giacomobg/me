@@ -13,6 +13,7 @@
   a {
     text-decoration: none;
     color: black;
+    position: relative;
   }
 
   body {
@@ -27,11 +28,11 @@
   }
 
   h3 {
-    margin-left: 13px;
+    margin-left: 10px;
   }
 
   h3 ~ p {
-    margin-left: 13px;
+    margin-left: 10px;
   }
 
   h3 {
@@ -43,10 +44,10 @@
     font-size: 12pt;
   }
 
-  .column > img {
-    /* display: inline-block; */
+  /* .column > img {
+    display: inline-block;
     float: right;
-  }
+  } */
 
   a > p {
     margin: 5px 0px 0px 15px;
@@ -71,6 +72,7 @@
   } */
 
   .container {
+    clear: both;
     float: left;
   }
 
@@ -82,6 +84,7 @@
   .row {
     display: flex;
     flex-direction: row;
+    max-width: 1100px;
   }
 
   .row > * {
@@ -108,6 +111,37 @@
     alignment-baseline: middle;
   }
 
+  .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #e8e7ba;
+  }
+
+  a:hover .overlay {
+    opacity: 0.8;
+  }
+
+  .text {
+    /* color: white; */
+    font-size: 14px;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .img-container {
+    position: relative;
+  }
+
 </style>
 
 <!-- <script src="https://cdn.ons.gov.uk/vendor/d3/4.2.7/d3.min.js"></script> -->
@@ -121,31 +155,49 @@
     <p class="presvg">I find and communicate stories in data</p>
   </div> -->
 
+  <h5 style="float:right;">Portfolio | Giacomo Boscaini-Gilroy</h5>
+
   <div class="container">
     <svg id="paths">
     </svg>
     <div class="flex-container">
+
       <h3>Office for National Statistics</h3>
 
-      <p>Since August 2019 I have been finding and communicating stories in government statistics in the data visualisation team.</p>
+      <p>I communicate the stories in goverment data to the public.</p>
 
       <div class="row">
         <div class="column">
-          <p>We make statistics accessible with engaging interactive content...</p>
+          <p>In the data visualisation team we make statistics accessible with engaging interactive content...</p>
         </div>
         <div class="column">
           <a target="_blank" rel="noopener noreferrer" href="https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/articles/comparisonsofallcausemortalitybetweeneuropeancountriesandregions/januarytojune2020">
-            <img src="europeanmortality.png" width="100%"></img>
+            <div class="img-container">
+              <img src="europeanmortality.png" width="100%">
+              <div class="overlay">
+                <div class="text">Map of European mortality showing the spread of COVID-19 throughout 2020 <br>(Figure 3 in linked article)<br>Update coming soon</div>
+              </div>
+            </div>
           </a>
         </div>
         <div class="column">
           <a target="_blank" rel="noopener noreferrer" href="https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/articles/populationprofilesforlocalauthoritiesinengland/2020-12-14">
-            <img src="popprofiles.png" width="100%"></img>
+            <div class="img-container">
+              <img src="popprofiles.png" width="100%"></img>
+              <div class="overlay">
+                <div class="text">Profiles of local authorities to aid COVID-19 policymaking</div>
+              </div>
+            </div>
           </a>
         </div>
         <div class="column">
           <a target="_blank" rel="noopener noreferrer" href="https://www.ons.gov.uk/peoplepopulationandcommunity/healthandsocialcare/causesofdeath/articles/deathsduetocovid19interactivemap/2021-02-25">
-            <img src="localcoviddeaths.png" width="100%"></img>
+            <div class="img-container">
+              <img src="localcoviddeaths.png" width="100%"></img>
+              <div class="overlay">
+                <div class="text">Local area map of COVID-19 deaths</div>
+              </div>
+            </div>
           </a>
         </div>
         <!-- <div class="column">
@@ -161,17 +213,32 @@
         </div>
         <div class="column">
           <a target="_blank" rel="noopener noreferrer" href="https://www.ons.gov.uk/economy/nationalaccounts/balanceofpayments/articles/ukforeigndirectinvestmenttrendsandanalysis/november2020">
-            <img src="bump.png" width="100%"></img>
+            <div class="img-container">
+              <img src="bump.png" width="100%"></img>
+              <div class="overlay">
+                <div class="text">Foreign Direct Investment <br>(Figures 7, 8)</div>
+              </div>
+            </div>
           </a>
         </div>
         <div class="column">
           <a target="_blank" rel="noopener noreferrer" href="https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/articles/recenttrendsinsuicidedeathoccurrencesinenglandandwalesbetween2001and2018/2020-12-08">
-            <img src="suicides.png" width="100%"></img>
+            <div class="img-container">
+              <img src="suicides.png" width="100%"></img>
+              <div class="overlay">
+                <div class="text">Methods of suicide<br>(Figures 9, 10, 14, 15, 16, 17)</div>
+              </div>
+            </div>
           </a>
         </div>
         <div class="column">
           <a target="_blank" rel="noopener noreferrer" href="https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/ageing/articles/livinglonger/implicationsofchildlessnessamongtomorrowsolderpopulation">
-            <img src="childlesswomen.png" width="100%"></img>
+            <div class="img-container">
+              <img src="childlesswomen.png" width="100%"></img>
+              <div class="overlay">
+                <div class="text">Growing numbers of elderly childless women<br>(Figure 2) </div>
+              </div>
+            </div>
           </a>
         </div>
       </div>
