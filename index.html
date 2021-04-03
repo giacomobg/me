@@ -34,6 +34,10 @@
     alignment-baseline: middle;
   }
 
+  .moving-dots {
+    fill: #666;
+  }
+
 </style>
 
 <!-- <script src="https://cdn.ons.gov.uk/vendor/d3/4.2.7/d3.min.js"></script> -->
@@ -117,6 +121,7 @@
       .enter()
       .append("circle")
       .attr("id", function(d,i) { return "circle" + i })
+      .classed("moving-dots", true)
       .attr("r", 4)
       .attr("opacity", 0)
 
