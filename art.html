@@ -10,23 +10,100 @@
 
 <style>
 
-  body {
-    font-family: 'Open Sans';
+  a {
+    text-decoration: none;
+    color: black;
+    position: relative;
   }
 
-  h1, p {
-    text-align: center;
+  body {
+    font-family: 'Open Sans';
+    display: inline-block;
+    margin-left: 15px;
+  }
+
+  h3, p {
+    float: left;
+    /* margin: 10px 0px 10px 5px; */
+  }
+
+  h3 {
+    margin-left: 10px;
+  }
+
+  h3 ~ p {
+    margin-left: 10px;
+  }
+
+  h3 {
+    font-size: 14pt;
   }
 
   p {
-    margin-top: 50px;
+    margin-top: 0px;
+    font-size: 12pt;
+  }
+
+  /* .column > img {
+    display: inline-block;
+    float: right;
+  } */
+
+  a > p {
+    margin: 5px 0px 0px 15px;
+    display: inline-block;
+  }
+
+  .presvg {
+    /* clear: both; */
+    /* display: block; */
+    margin-left: 30px;
+    margin-bottom: 30px;
+    font-size: 14pt;
+  }
+
+  .row {
+    clear: both;
+  }
+
+  /* .column {
+    float: left;
+    width: 30%;
+  } */
+
+  .container {
+    clear: both;
+    float: left;
+  }
+
+  .flex-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .row {
+    display: flex;
+    flex-direction: row;
+    max-width: 800px;
+  }
+
+  .row > * {
+    margin: 10px;
+    flex: 1 1 0;
+  }
+  .row :first-child {
+    flex: 1 1 0;
   }
 
   svg {
-    width: 100%;
-    height: 700px;
-    margin: 0 auto;
-    display: block;
+    display: none;
+
+    float: left;
+    /* clear: both; */
+    width: 30px;
+    height: 1000px;
+    /* margin: 0 auto; */
+    /* display: inline-block; */
   }
 
   text {
@@ -34,16 +111,85 @@
     alignment-baseline: middle;
   }
 
+  .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #e8e7ba;
+  }
+
+  a:hover .overlay {
+    opacity: 0.8;
+  }
+
+  .text {
+    /* color: white; */
+    font-size: 14px;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .img-container {
+    position: relative;
+  }
+
 </style>
 
-<!-- <script src="https://cdn.ons.gov.uk/vendor/d3/4.2.7/d3.min.js"></script> -->
 <script src="lib/d3.min.js"></script>
 
 <body>
-  <h1>This page is unfinished</h1>
-  <p>Pick a path</p>
-  <svg id="paths">
-  </svg>
+  <a href="index.html">
+    <p style="font-size: 30px;">←</p>
+  </a>
+
+  <h5 style="float:right;">Art | Giacomo Boscaini-Gilroy</h5>
+
+  <div class="container">
+    <svg id="paths">
+    </svg>
+    <div class="flex-container">
+
+      <!-- <h3>Office for National Statistics</h3> -->
+
+      <div class="row">
+        <div class="column">
+          <div class="img-container">
+            <img src="artimg.jpg" width="100%">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="column">
+          <p>I capture the energy of eerie dark urban spaces.
+            <br>Locations that despite being incongruously devoid of people
+            <br>are bursting full of the life within them.
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="column">
+          <div class="img-container">
+            <img src="nightlifeinsuburbia.jpg" width="100%">
+          </div>
+        </div>
+        <div class="column">
+        </div>
+      </div>
+
+    </div>
+  </div>
+
 </body>
 
 <script>
@@ -66,6 +212,8 @@
     }
   ];
   var circleId = 0;
+  var firstAnimation = [true, true, true, true];
+
 
 
 
@@ -73,7 +221,7 @@
   createButtons();
   createCircles();
   data.forEach(function(item, i) { moveCircleToStartByNum(i); });
-  setInterval(repeat, 2000);
+  setInterval(repeat, 4000);
   addSvgMouseBehaviour();
 
 
@@ -117,7 +265,7 @@
       .append("circle")
       .attr("id", function(d,i) { return "circle" + i })
       .attr("r", 4)
-      .attr("opacity", 1)
+      .attr("opacity", 0)
 
   } // end create
 
@@ -133,46 +281,60 @@
   }
 
   function transitionCircle() {
-    var duration = 8000;
+    var duration = 16000;
+    var fadeOutDelay = 800;
 
+    // fade out
     d3.select("#circle"+circleId)
-      .transition()
-      .duration(7200)
+      .transition("opacity")
+      .duration(duration - fadeOutDelay)
       .on("end", function() {
-        d3.select("#circle"+circleId)
+        d3.select(this)
           .transition()
-          .duration(700)
+          .duration(fadeOutDelay)
           .attr("opacity", 0);
       });
 
-    d3.select("#circle"+circleId)
-      .transition("tx")
-      .ease(d3.easeCubicInOut)
-      .duration(duration)
-      .attr("cx", function(d) { return svgMidpoint + d } )
-      .on("end", function() {
-        d3.select(this)
-          .attr("cx", svgMidpoint)
-          .transition()
-          .duration(1000)
-          .attr("opacity", 1);
-      });
+    // d3.select("#circle"+circleId)
+    //   .transition("tx")
+    //   .ease(d3.easeCubicInOut)
+    //   .duration(duration)
+    //   .attr("cx", function(d) { return svgMidpoint + d } )
+    //   .on("end", function() {
+    //     d3.select(this)
+    //       .attr("cx", svgMidpoint)
+    //       .transition()
+    //       .duration(1000)
+    //       .attr("opacity", 1);
+    //   });
 
+    // transition y
     d3.select("#circle"+circleId)
       .transition("ty")
       .ease(d3.easeLinear)
       .duration(duration)
-      .attr("cy", 250)
+      .attr("cy", 500)
       .on("end", function() {
         d3.select(this)
-          .attr("cy", 10);
+          .attr("cy", 10)
+          .transition()
+          .duration(1000)
+          .attr("opacity", 1);
       });
 
   }
 
   function repeat() {
     transitionCircle();
-    // moveCircleToStart();
+
+    if (firstAnimation[circleId]) {
+      d3.select("#circle" + circleId)
+        .transition()
+        .duration(700)
+        .attr("opacity", 1);
+      firstAnimation[circleId] = false;
+    }
+
     circleId = (circleId + 1) % data.length;
 
   }
