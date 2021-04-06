@@ -14,7 +14,7 @@
     font-family: 'Open Sans';
   }
 
-  h1, p {
+  h1, h5, p {
     text-align: center;
   }
 
@@ -45,6 +45,7 @@
 
 <body>
   <h1>Giacomo Boscaini-Gilroy</h1>
+  <h5>Communicating numbers visually</h5>
   <p>Pick a path</p>
   <svg id="paths">
   </svg>
@@ -203,12 +204,13 @@
 
     svg.on("mousemove", function(d) {
       coordinates = d3.mouse(this);
+      var scalingVariable = 3;
       var x = coordinates[0];
       var y = coordinates[1];
       var distanceFromButton1 = Math.sqrt( (x-(svgMidpoint-100))*(x-(svgMidpoint-100)) + (y-330)*(y-330) );
       var distanceFromButton2 = Math.sqrt( (x-(svgMidpoint+100))*(x-(svgMidpoint+100)) + (y-330)*(y-330) );
-      linkRect0.attr("height", Math.min( Math.max(0, ((maxRectHeight[0]+30)/6)*(distanceFromButton2 - distanceFromButton1)/distanceFromButton1 - 15 ), maxRectHeight[0] ))
-      linkRect1.attr("height", Math.min( Math.max(0, ((maxRectHeight[1]+30)/6)*(distanceFromButton1 - distanceFromButton2)/distanceFromButton2 - 15 ), maxRectHeight[1] ))
+      linkRect0.attr("height", Math.min( Math.max(0, ((maxRectHeight[0]+30)/scalingVariable)*(distanceFromButton2 - distanceFromButton1)/distanceFromButton1 - 15 ), maxRectHeight[0] ))
+      linkRect1.attr("height", Math.min( Math.max(0, ((maxRectHeight[1]+30)/scalingVariable)*(distanceFromButton1 - distanceFromButton2)/distanceFromButton2 - 15 ), maxRectHeight[1] ))
       // console.log(distanceFromButton1, distanceFromButton2)
 
     })
