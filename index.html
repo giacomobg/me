@@ -79,6 +79,7 @@
   createButtons();
   createCircles();
   data.forEach(function(item, i) { moveCircleToStartByNum(i); });
+  repeat();
   setInterval(repeat, 2000);
   addSvgMouseBehaviour();
 
