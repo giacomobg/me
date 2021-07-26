@@ -62,15 +62,6 @@
     font-size: 14pt;
   }
 
-  .row {
-    clear: both;
-  }
-
-  /* .column {
-    float: left;
-    width: 30%;
-  } */
-
   .container {
     clear: both;
     float: left;
@@ -82,6 +73,7 @@
   }
 
   .row {
+    clear: both;
     display: flex;
     flex-direction: row;
     max-width: 1100px;
@@ -93,17 +85,6 @@
   }
   .row :first-child {
     flex: 1 1 0;
-  }
-
-  svg {
-    display: none;
-
-    float: left;
-    /* clear: both; */
-    width: 30px;
-    height: 1000px;
-    /* margin: 0 auto; */
-    /* display: inline-block; */
   }
 
   text {
@@ -158,8 +139,6 @@
   <h5 style="float:right;">Portfolio | Giacomo Boscaini-Gilroy</h5>
 
   <div class="container">
-    <svg id="paths">
-    </svg>
     <div class="flex-container">
 
       <h3>Office for National Statistics</h3>
@@ -170,14 +149,11 @@
             <br>I communicate the stories in goverment figures
             <br>to the public.</p>
         </div>
-        <!-- <div class="column">
-
-          <p style="float:right; text-align:right;">Click a project
-            <br>to see it in action
-          </p>
-        </div> -->
       </div>
 
+
+      <div id="ons-content"></div>
+      
 
       <div class="row">
         <div class="column">
@@ -186,7 +162,7 @@
         <div class="column">
           <a target="_blank" rel="noopener noreferrer" class="no-decoration" href="https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/articles/comparisonsofallcausemortalitybetweeneuropeancountriesandregions/2020">
             <div class="img-container">
-              <img src="europeanmortality.png" width="100%">
+              <img src="images/europeanmortality.png" width="100%">
               <div class="overlay">
                 <div class="text">Map of European mortality showing the spread of COVID-19 throughout 2020 <br>(Figure 2)</div>
               </div>
@@ -196,7 +172,7 @@
         <div class="column">
           <a target="_blank" rel="noopener noreferrer" class="no-decoration" href="https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/articles/populationprofilesforlocalauthoritiesinengland/2020-12-14">
             <div class="img-container">
-              <img src="popprofiles.png" width="100%"></img>
+              <img src="images/popprofiles.png" width="100%"></img>
               <div class="overlay">
                 <div class="text">Profiles of local authorities to aid COVID-19 policymaking</div>
               </div>
@@ -206,18 +182,13 @@
         <div class="column">
           <a target="_blank" rel="noopener noreferrer" class="no-decoration" href="https://www.ons.gov.uk/peoplepopulationandcommunity/healthandsocialcare/causesofdeath/articles/deathsduetocovid19interactivemap/2021-02-25">
             <div class="img-container">
-              <img src="localcoviddeaths.png" width="100%"></img>
+              <img src="images/localcoviddeaths.png" width="100%"></img>
               <div class="overlay">
                 <div class="text">Local area map of COVID-19 deaths</div>
               </div>
             </div>
           </a>
         </div>
-        <!-- <div class="column">
-          <a target="_blank" rel="noopener noreferrer" href="https://giacomobg.github.io/onshhcomp/map/">
-            <img src="householdcomposition.png" width="100%"></img>
-          </a>
-        </div> -->
       </div>
 
       <div class="row">
@@ -227,7 +198,7 @@
         <div class="column">
           <a target="_blank" rel="noopener noreferrer" class="no-decoration" href="https://www.ons.gov.uk/peoplepopulationandcommunity/healthandsocialcare/conditionsanddiseases/articles/coronaviruscovid19roundup6to10july2020/2020-07-10">
             <div class="img-container">
-              <img src="householdcomposition.png" width="100%"></img>
+              <img src="images/householdcomposition.png" width="100%"></img>
               <div class="overlay">
                 <div class="text">Over 70s living with<br>younger people</div>
               </div>
@@ -237,7 +208,7 @@
         <div class="column">
           <a target="_blank" rel="noopener noreferrer" class="no-decoration" href="https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/articles/coronavirusandtraveltowork/june2020">
             <div class="img-container">
-              <img src="traveltowork.png" width="100%"></img>
+              <img src="images/traveltowork.png" width="100%"></img>
               <div class="overlay">
                 <div class="text">Workers who use public transport<br>and their industries</div>
               </div>
@@ -245,9 +216,6 @@
           </a>
         </div>
         <div class="column">
-          <!-- <p style="text-align:right; float:right;">
-            Click a project
-            <br>to see it in action -->
           </p>
         </div>
       </div>
@@ -259,7 +227,7 @@
         <div class="column">
           <a target="_blank" rel="noopener noreferrer" class="no-decoration" href="https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/ageing/articles/livinglonger/implicationsofchildlessnessamongtomorrowsolderpopulation">
             <div class="img-container">
-              <img src="childlesswomen.png" width="100%"></img>
+              <img src="images/childlesswomen.png" width="100%"></img>
               <div class="overlay">
                 <div class="text">Growing numbers of elderly childless women<br>(Figure 2) </div>
               </div>
@@ -269,7 +237,7 @@
         <div class="column">
           <a target="_blank" rel="noopener noreferrer" class="no-decoration" href="https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/articles/recenttrendsinsuicidedeathoccurrencesinenglandandwalesbetween2001and2018/2020-12-08">
             <div class="img-container">
-              <img src="suicides.png" width="100%"></img>
+              <img src="images/suicides.png" width="100%"></img>
               <div class="overlay">
                 <div class="text">Methods of suicide<br>(Figures 9, 10, 14, 15, 16, 17)</div>
               </div>
@@ -279,31 +247,12 @@
         <div class="column">
           <a target="_blank" rel="noopener noreferrer" class="no-decoration" href="https://www.ons.gov.uk/economy/nationalaccounts/balanceofpayments/articles/ukforeigndirectinvestmenttrendsandanalysis/november2020">
             <div class="img-container">
-              <img src="bump.png" width="100%"></img>
+              <img src="images/bump.png" width="100%"></img>
               <div class="overlay">
                 <div class="text">Foreign Direct Investment <br>(Figures 7, 8)</div>
               </div>
             </div>
           </a>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="column">
-        </div>
-        <div class="column">
-          <a target="_blank" rel="noopener noreferrer" class="no-decoration" href="">
-            <div class="img-container">
-              <img src="loneliness.png" width="100%"></img>
-              <div class="overlay">
-                <div class="text">Lockdown loneliness</div>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="column">
-        </div>
-        <div class="column">
         </div>
       </div>
 
@@ -343,172 +292,77 @@
 </body>
 
 <script>
-
-  var svg = d3.select("#paths");
-  var svgMidpoint = parseInt(svg.style("width"))/2;
-  var data = [100,-100,100,-100];
-  var buttonsData = [
-    {
-      text: "Data",
-      x: -100,
-      href: "data.html",
-      image: "dataimg.png"
-    },
-    {
-      text: "Art",
-      x: 100,
-      href: "art.html",
-      image: "artimg.jpg"
+    if (window.innerWidth < 600) { var mobile = true }
+    var interactives = [
+        {
+            href: 'https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/articles/comparisonsofallcausemortalitybetweeneuropeancountriesandregions/2020',
+            img: "images/europeanmortality.png",
+            blurb: "Map of European mortality showing the spread of COVID-19 throughout 2020 <br>(Figure 2)"
+        },
+        {
+            href: 'https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/articles/comparisonsofallcausemortalitybetweeneuropeancountriesandregions/2020',
+            img: "images/europeanmortality.png",
+            blurb: "Map of European mortality showing the spread of COVID-19 throughout 2020 <br>(Figure 2)"
+        },
+        {
+            href: 'https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/articles/comparisonsofallcausemortalitybetweeneuropeancountriesandregions/2020',
+            img: "images/europeanmortality.png",
+            blurb: "Map of European mortality showing the spread of COVID-19 throughout 2020 <br>(Figure 2)"
+        },
+        {
+            href: 'https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/articles/comparisonsofallcausemortalitybetweeneuropeancountriesandregions/2020',
+            img: "images/europeanmortality.png",
+            blurb: "Map of European mortality showing the spread of COVID-19 throughout 2020 <br>(Figure 2)"
+        },
+        {
+            href: 'https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/articles/comparisonsofallcausemortalitybetweeneuropeancountriesandregions/2020',
+            img: "images/europeanmortality.png",
+            blurb: "Map of European mortality showing the spread of COVID-19 throughout 2020 <br>(Figure 2)"
+        }
+    ]
+                                 
+    var container = d3.select("#ons-content");
+    container.append("div").classed("row",true)
+        .append("div").classed("column",true)
+        .append("p")
+        .text("I make statistics accessible with engaging interactive content...")
+    
+    chunkSize = Math.min(4,Math.floor(window.innerWidth/200));
+    
+    var chunked = chunk(interactives, chunkSize);
+    console.log(chunked);
+    
+    var entries = container.selectAll("#somethingthatdoesnotexist")
+        .data(chunked)
+        .enter()
+        .append("div").classed("row", true)
+        .selectAll("#alsodoesnotexist")
+        .data(function(d) { return d })
+        .enter()
+        .append("div").classed("column", true);
+    
+    var imgContainers = entries.append("a")
+        .attr("target", "_blank")
+        .attr("rel", "noopener noreferrer")
+        .attr("class", "no-decoration")
+        .attr("href", function(d) { return d.href })
+        .append("div")
+        .attr("class", "img-container");
+        
+    imgContainers.append("img")
+        .attr("src", function(d) { return d.img })
+        .attr("width", "100%");
+    imgContainers.append("div").classed("overlay", true)
+        .append("div")
+        .classed("text", true)
+        .html(function(d) { return d.blurb });
+    
+    function chunk(arr, chunkSize) {
+        var R = [];
+        for (var i = 0; i < arr.length; i += chunkSize)
+          R.push(arr.slice(i, i + chunkSize));
+        while (R[R.length-1].length < chunkSize)
+            R[R.length-1].push([]);
+        return R;
     }
-  ];
-  var circleId = 0;
-  var firstAnimation = [true, true, true, true];
-
-
-
-
-  // run it
-  createButtons();
-  createCircles();
-  data.forEach(function(item, i) { moveCircleToStartByNum(i); });
-  setInterval(repeat, 4000);
-  addSvgMouseBehaviour();
-
-
-  function createButtons() {
-
-    // create buttons
-    var links = svg.selectAll("a")
-      .data(buttonsData)
-      .enter()
-      // create a containers
-      .append("a")
-      .attr("href", function(d) { return d.href })
-
-    // put text in a containers
-    links.append("text")
-      .attr("x", function(d) { return d.x + svgMidpoint })
-      .attr("y", 250)
-      .attr("dy", "0.4em")
-      .text(function(d) { return d.text })
-
-    // add boxes below
-    var rectWidth = 150
-    links.append("image")
-      .attr("id", function(d,i) { return "link-rect" + i })
-      .classed("link-rect", true)
-      .attr("x", function(d) { return d.x + svgMidpoint - rectWidth/2})
-      .attr("y", 270)
-      .attr("width", rectWidth)
-      .attr("height", 0)
-      .attr("href", function(d) { return d.image })
-      .attr("preserveAspectRatio", "xMidYMax slice") // xMidYMin can work too
-      // .attr("fill", function(d,i) { return "url(#img" + i + ")" } );
-  }
-
-  function createCircles() {
-
-    // create circles
-    circles = svg.selectAll("circle")
-      .data(data)
-      .enter()
-      .append("circle")
-      .attr("id", function(d,i) { return "circle" + i })
-      .attr("r", 4)
-      .attr("opacity", 0)
-
-  } // end create
-
-
-  function moveCircleToStart() {
-    moveCircleToStartByNum(circleId);
-  }
-
-  function moveCircleToStartByNum(num) {
-    d3.select("#circle"+num)
-      .attr("cx", svgMidpoint)
-      .attr("cy", 10);
-  }
-
-  function transitionCircle() {
-    var duration = 16000;
-    var fadeOutDelay = 800;
-
-    // fade out
-    d3.select("#circle"+circleId)
-      .transition("opacity")
-      .duration(duration - fadeOutDelay)
-      .on("end", function() {
-        d3.select(this)
-          .transition()
-          .duration(fadeOutDelay)
-          .attr("opacity", 0);
-      });
-
-    // d3.select("#circle"+circleId)
-    //   .transition("tx")
-    //   .ease(d3.easeCubicInOut)
-    //   .duration(duration)
-    //   .attr("cx", function(d) { return svgMidpoint + d } )
-    //   .on("end", function() {
-    //     d3.select(this)
-    //       .attr("cx", svgMidpoint)
-    //       .transition()
-    //       .duration(1000)
-    //       .attr("opacity", 1);
-    //   });
-
-    // transition y
-    d3.select("#circle"+circleId)
-      .transition("ty")
-      .ease(d3.easeLinear)
-      .duration(duration)
-      .attr("cy", 500)
-      .on("end", function() {
-        d3.select(this)
-          .attr("cy", 10)
-          .transition()
-          .duration(1000)
-          .attr("opacity", 1);
-      });
-
-  }
-
-  function repeat() {
-    transitionCircle();
-
-    if (firstAnimation[circleId]) {
-      d3.select("#circle" + circleId)
-        .transition()
-        .duration(700)
-        .attr("opacity", 1);
-      firstAnimation[circleId] = false;
-    }
-
-    circleId = (circleId + 1) % data.length;
-
-  }
-
-  function addSvgMouseBehaviour() {
-
-    var coordinates = [];
-    var maxRectHeight = 120;
-    var linkRect0 = d3.select("#link-rect0")
-    var linkRect1 = d3.select("#link-rect1")
-
-    svg.on("mousemove", function(d) {
-      coordinates = d3.mouse(this);
-      var x = coordinates[0];
-      var y = coordinates[1];
-      var distanceFromButton1 = Math.sqrt( (x-(svgMidpoint-100))*(x-(svgMidpoint-100)) + (y-330)*(y-330) );
-      var distanceFromButton2 = Math.sqrt( (x-(svgMidpoint+100))*(x-(svgMidpoint+100)) + (y-330)*(y-330) );
-      linkRect0.attr("height", Math.min( Math.max(0, ((maxRectHeight+30)/6)*(distanceFromButton2 - distanceFromButton1)/distanceFromButton1 - 15 ), maxRectHeight ))
-      linkRect1.attr("height", Math.min( Math.max(0, ((maxRectHeight+30)/6)*(distanceFromButton1 - distanceFromButton2)/distanceFromButton2 - 15 ), maxRectHeight ))
-      // console.log(distanceFromButton1, distanceFromButton2)
-
-    })
-  }
-
-
-
 </script>
