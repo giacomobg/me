@@ -27,3 +27,27 @@ h1, h3 {
     display: none;
   }
 }
+
+.border-container {
+  position:relative;
+}
+
+.border-container.title:before {
+  border-color: #ccc;
+  top: 26px;
+  height: 24px;
+}
+
+.border-container:before {
+    position: absolute;
+    width: 00px;
+    height: calc(100% - 36px);
+    border-color: #eee;
+    /* border-color: #e8e7ba; */
+    border-style: solid;
+    /* border-width: 2px; */
+    content: ' ';
+    top: 10px;
+    left: 1px;
+    border-width: 3px 0 0 3px;
+}
