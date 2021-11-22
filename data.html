@@ -87,48 +87,10 @@
     flex: 1 1 0;
   }
 
-  a {
-    text-decoration: none;
-    background-color: #eee;
-    color: black;
-  }
-  a:hover {
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-  }
-
-  text {
-    text-anchor: middle;
-    alignment-baseline: middle;
-  }
-
-  /* .overlay {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    width: 100%;
-    opacity: 0;
-    transition: .5s ease;
-    background-color: #e8e7ba;
-  } */
-
   a:hover .overlay .text {
     text-decoration: underline;
     text-decoration-thickness: 2px;
   }
-
-  /* .overlay {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    width: 100%;
-  } */
 
   .text {
     color: black;
@@ -158,15 +120,21 @@
 <script src="lib/d3.min.js"></script>
 
 <body>
-  <a href="." class="no-decoration">
+  <p class="header"><a href="./index.html" >
+    Home
+  </a></p>
+  <p class="header"><a href="./art.html" >
+    Art
+  </a></p>
+  <!-- <a href="." class="no-decoration">
     <p style="font-size: 30px;">←</p>
-  </a>
+  </a> -->
   <!-- <div class="row">
     <p class="presvg">I find and communicate stories in data</p>
   </div> -->
 
-  <h5 class="header desktop">Professional portfolio | Giacomo Boscaini-Gilroy</h5>
-  <h5 class="header mobile">Giacomo Boscaini-Gilroy<br>Professional portfolio</h5>
+  <p class="header right desktop">Professional portfolio | Giacomo Boscaini-Gilroy</p>
+  <p class="header right mobile">Giacomo Boscaini-Gilroy<br>Professional portfolio</p>
 
   <div class="container">
     <div class="flex-container">
@@ -212,7 +180,7 @@
             <p>
               In 2021 I was a named author on
               <a href="https://www.thelancet.com/journals/lanres/article/PIIS2213-2600(21)00414-8/fulltext">a paper in the Lancet</a>
-              for my work on a graphic summarising existing research.
+              for my work on the graphic within.
             </p>
           </div>
         </div>

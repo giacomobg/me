@@ -61,6 +61,10 @@
     flex: 1 1 0;
   }
 
+  .column.photo {
+    margin: 0px;
+  }
+
   text {
     text-anchor: middle;
     alignment-baseline: middle;
@@ -102,18 +106,21 @@
 <script src="lib/d3.min.js"></script>
 
 <body>
-  <a href=".">
-    <p style="font-size: 30px;">←</p>
-  </a>
+  <p class="header"><a href="./index.html">
+    Home
+  </a></p>
+  <p class="header"><a href="./data.html">
+    Professional
+  </a></p>
 
-  <h5 class="header desktop">Art portfolio | Giacomo Boscaini-Gilroy</h5>
-  <h5 class="header mobile">Giacomo Boscaini-Gilroy<br>Art portfolio</h5>
+  <p class="header right desktop">Art portfolio | Giacomo Boscaini-Gilroy</p>
+  <p class="header right mobile">Giacomo Boscaini-Gilroy<br>Art portfolio</p>
 
   <div class="container">
     <div class="flex-container">
 
       <div class="row">
-        <div class="column">
+        <div class="column photo">
           <a href="images/queensgateterrace.jpg">
             <div class="img-container">
               <img src="images/queensgateterrace_small.jpg" width="100%">
@@ -134,9 +141,9 @@
       </div>
 
       <div class="row">
-        <div class="column">
+        <div class="column photo">
         </div>
-        <div class="column">
+        <div class="column photo">
           <a href="images/nightlifeinsuburbia.jpg">
             <div class="img-container">
               <img src="images/nightlifeinsuburbia.jpg" width="100%">
@@ -146,21 +153,21 @@
       </div>
 
       <div class="row">
-        <div class="column">
+        <div class="column photo">
           <a href="images/surbitonstation.jpg">
             <div class="img-container">
               <img src="images/surbitonstation.jpg" width="100%">
             </div>
           </a>
         </div>
-        <div class="column">
+        <div class="column photo">
         </div>
       </div>
 
       <div class="row">
-        <div class="column">
+        <div class="column photo">
         </div>
-        <div class="column">
+        <div class="column photo">
           <a href="images/bricklaneblack.jpg">
             <div class="img-container">
               <img src="images/bricklaneblack.jpg" width="100%">

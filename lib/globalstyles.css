@@ -13,8 +13,23 @@ h1, h3 {
 
 .header {
   margin-top: 17px;
+  margin-left: 5px;
+  font-size: 13px;
+}
+
+.header.right {
   float: right;
   text-align: right;
+}
+
+a {
+  text-decoration: none;
+  background-color: #eee;
+  color: black;
+}
+a:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
 }
 
 @media (max-width: 599px) {
