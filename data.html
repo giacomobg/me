@@ -157,16 +157,15 @@
       <div class="border-container">
         <div class="row">
           <div class="column">
-            <p>Developing data visualisation for the news.</p>
+            <p>I develop visuals in collaboration with journalists
+              <br>in multiple news publications
+              <br>and write the odd story myself.
+              <br><a href="https://www.newstatesman.com/author/giacomoboscainigilroy">My <em>New Statesman</em> author page.</a>
+            </p>
           </div>
         </div>
-      </div>
-      <div class="border-container">
-        <div class="row">
-          <div class="column">
-            <p>Adding my projects here soon... https://nsmg-projects-public.s3.eu-west-2.amazonaws.com/test/nsmg-102/index.html</p>
-          </div>
-        </div>
+
+        <div id="ns"></div>
       </div>
 
       <div class="border-container title">
@@ -259,6 +258,25 @@
 
 <script>
     if (window.innerWidth < 600) { var mobile = true }
+    
+    var nsProjects = [
+        {
+          href: 'https://nsmg-projects-public.s3.eu-west-2.amazonaws.com/live/nsmg-102/index.html',
+          img: 'images/ukrainemap.png',
+          blurb: 'How big is occupied Ukraine?'
+        },
+        {
+          href: 'https://www.newstatesman.com/economy/2022/05/office-clearout-leaves-britain-with-more-jobs-than-workers-to-fill-them',
+          img: 'images/vacanciessurpassed.png',
+          blurb: 'More jobs than workers to fill them'
+        },
+        {
+          href: 'https://nsmg-projects-public.s3.eu-west-2.amazonaws.com/live/nsmg-110/index.html',
+          img: 'images/classquiz.png',
+          blurb: 'What class would you put these celebrities in?'
+        }
+    ]
+
     var interactives = [
         {
             href: 'https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/articles/comparisonsofallcausemortalitybetweeneuropeancountriesandregions/2020',
@@ -315,6 +333,7 @@
       }
     ]
 
+    addContent("#ns", nsProjects);
     addContent("#ons-collaborate", interactives);
     addContent("#ons-improve", bulletins);
 
