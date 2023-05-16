@@ -42,7 +42,7 @@
   
   .title {
     margin-top: 40px;
-    margin-bottom: 2em;
+    margin-bottom: 1.5em;
   }
   
   .first-title {
@@ -121,7 +121,7 @@
 
   .img-container {
     position: relative;
-    margin-top: 50px;
+    margin-top: 40px;
   }
 
 </style>
@@ -132,6 +132,9 @@
 <body>
   <p class="header"><a href="./index.html" >
     Home
+  </a></p>
+  <p class="header selected-page"><a href="./data.html" >
+    Professional
   </a></p>
   <p class="header"><a href="./art.html" >
     Art
@@ -150,8 +153,17 @@
     <div class="flex-container">
       
       <div class="border-container title first-title">
+        <h3>Client projects</h3>
+        <p>2023</p>
+      </div>
+      
+      <div class="border-container">
+        <div id="freelance"></div>
+      </div>
+
+      <div class="border-container title">
         <h3>New Statesman Media Group and GlobalData plc</h3>
-        <p>since 2022</p>
+        <p>2022 to 2023</p>
       </div>
       
       <div class="border-container">
@@ -257,6 +269,14 @@
 
 <script>
     if (window.innerWidth < 600) { var mobile = true }
+
+    var clientProjects = [
+      {
+          href: 'https://www.info-res.org/post/the-effect-of-the-invasion-on-ukraine-s-education-system-one-year-overview',
+          img: 'images/cir-education.png',
+          blurb: 'Center for Information Resilience: mapping bombed Ukrainian schools'
+      }
+    ]
     
     var nsProjects = [
          {
@@ -347,6 +367,7 @@
       }
     ]
 
+    addContent("#freelance", clientProjects)
     addContent("#ns", nsProjects);
     addContent("#ons-collaborate", interactives);
     addContent("#ons-improve", bulletins);

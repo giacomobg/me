@@ -23,13 +23,15 @@ h1, h3 {
 }
 
 a {
-  text-decoration: none;
+  text-decoration-thickness: 2px;
   background-color: #eee;
   color: black;
 }
+a:not(.header.selected-page a) {
+  text-decoration-line: none;
+}
 a:hover {
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
+  text-decoration-line: underline !important;
 }
 img:hover, image:hover {
   opacity: 0.9;
