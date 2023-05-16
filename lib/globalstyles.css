@@ -71,3 +71,19 @@ img:hover, image:hover {
     left: 1px;
     border-width: 3px 0 0 3px;
 }
+
+footer {
+  border-top: solid #eee 3px;
+  background-color: white;
+  position: fixed;
+  left: -10px;
+  bottom: 0;
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
+}
+.side-margin {
+  margin-right:3px;
+  margin-left: 3px;
+}
