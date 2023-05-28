@@ -1,10 +1,14 @@
 @font-face {
-    font-family: 'SalmaAlfasans';
+    font-family: 'Salma';
     src: url("./SalmaAlfasans-Light.otf") format("opentype");
+}
+@font-face {
+    font-family: 'SalmaBold';
+    src: url("./SalmaAlfasans\ SemiBold.otf") format("opentype");
 }
 
 body {
-  font-family: 'SalmaAlfasans';
+  font-family: 'Salma';
 }
 
 h1, h3 {
