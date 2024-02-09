@@ -65,14 +65,17 @@
   }
 
   .scroll-instruction {
-    position: absolute;
+    position: relative;
+    height: 100vh;
+    padding-top: 100px;
+    /* position: absolute; */
+    z-index: 2;
     width: 100%;
-    margin: 100px auto;
+    margin: 0 auto;
     text-align: center;
     /* background-color: #fff; */
     font-weight: 700;
     font-size: 20px;
-    z-index: 2;
     text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
   }
   
@@ -83,7 +86,7 @@
   
   .first-title {
     position: relative;
-    margin-top: 100vh;
+    margin-top: 130vh;
     /* margin-top: 20px; */
   }
   
@@ -167,23 +170,29 @@
     text-align: right;
   }
 
-  .funky-animation {
-    position: relative;
-    height: calc(100vh - 130px);
-  }
-  .word-container {
+  .words-container {
     position: fixed;
     top: 0%;
-    width: 100%;
-    margin: 0 auto;
+    width: calc(100% - 30px);
     height: calc(100vh - 130px);
+    margin-top: 65px;
+    margin-right: 15px;
     text-align: center;
+  }
+  .word-container {
+    position: relative;
+    top: 50%
   }
   .word {
     display: inline-block;
+    font-weight: 700;
+  }
+  .words-subtitle {
     position: relative;
     top: 50%;
-    font-weight: 700;
+  }
+  .words-subtitle > * {
+    display: inline;
   }
 
 
@@ -216,17 +225,12 @@
 
     <div class="scroll-instruction">Scroll down!</div>
 
-    <div class="bold funky-animation">
-      <!-- <div class="word">I</div>
-      <div class="word">find</div> 
-      <div class="word">and</div> 
-      <div class="word">show</div> 
-      <div class="word">meaning</div> 
-      <div class="word">in</div> 
-      <div class="word">data.</div> -->
-    </div>
-    <div class="word-container">
-      <div class="word">I</div> <div class="word">f</div><div class="word">i</div><div class="word">n</div><div class="word">d</div> <div class="word">a</div><div class="word">n</div><div class="word">d</div> <div class="word">s</div><div class="word">h</div><div class="word">o</div><div class="word">w</div> <div class="word">m</div><div class="word">e</div><div class="word">a</div><div class="word">n</div><div class="word">i</div><div class="word">n</div><div class="word">g</div> <div class="word">i</div><div class="word">n</div> <div class="word">d</div><div class="word">a</div><div class="word">t</div><div class="word">a</div><div class="word">.</div>
+    <div class="words-container">
+      <div class="word-container">
+        <div class="word">I</div> <div class="word">f</div><div class="word">i</div><div class="word">n</div><div class="word">d</div> <div class="word">a</div><div class="word">n</div><div class="word">d</div> <div class="word">s</div><div class="word">h</div><div class="word">o</div><div class="word">w</div> <div class="word">m</div><div class="word">e</div><div class="word">a</div><div class="word">n</div><div class="word">i</div><div class="word">n</div><div class="word">g</div> <div class="word">i</div><div class="word">n</div> <div class="word">d</div><div class="word">a</div><div class="word">t</div><div class="word">a</div><div class="word">.</div>
+      </div>
+      <br>
+      <div class="words-subtitle">I am a freelance <div class="bold">data visualisation designer and developer</div><br>Telling beautiful stories with Python, QGIS, JavaScript, Svelte, D3, Mapbox and more...</div>
     </div>
 
       <!-- <div class="no-animation">
@@ -570,24 +574,23 @@
           start: "top 70%",
           end: "top 60%",
           scrub: 1,
-          // markers: true
         },
-        // y: "50vh",
       });
 
     });
 
-    // move in individual letters
+    // bring together individual letters
     let words = gsap.utils.toArray('.word');
     words.forEach((element,i) => {
       gsap.from(element, {
-        duration: 5,
-        x: Math.random()*80-40 + "vw",
-        y: Math.random()*80-40 + "vh",
-        rotation: Math.random()*360-180,
+        id: 'letters',
+        x: Math.random()*80-40 + "vw", // between -40 and 40 vw
+        y: Math.random()*80-40 + "vh", // between -40 and 40 vh
+        rotation: Math.random()*360-180, // between -180 and 180 degrees
+        ease: "expo.out",
         scrollTrigger: {
-          trigger: '.funky-animation',
-          start: 'top 60px',
+          trigger: '.scroll-instruction',
+          start: 'top top',
           end: 'bottom top',
           scrub: 2,
         }
@@ -595,16 +598,43 @@
     })
 
     // fade out words
+    let textEase = "none";
+
     gsap.to('.word-container', {
       opacity: 0,
+      ease: textEase,
       scrollTrigger: {
         trigger: '.first-title',
-        start: "top 60%",
+        start: "top 100%",
+        end: "+=20%",
+        scrub: true,
+      }
+    })
+    gsap.fromTo('.words-subtitle', {
+      opacity: 0,
+      ease: textEase,
+    },{
+      opacity: 1,
+      scrollTrigger: {
+        trigger: '.first-title',
+        start: "top 120%",
+        end: "+=20%",
+        scrub: true,
+      }
+    })
+    gsap.fromTo('.words-subtitle', {
+      opacity: 1,
+      ease: textEase,
+    },{
+      opacity: 0,
+      immediateRender: false,
+      scrollTrigger: {
+        trigger: '.first-title',
+        start: "top 70%",
         end: "+=10%",
         scrub: true,
       }
     })
-
     // gsap.from('.animation', {
     //     y: "100vh",
     //     stagger: 1,
