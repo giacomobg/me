@@ -1,37 +1,71 @@
 @font-face {
     font-family: 'Salma';
     src: url("./SalmaAlfasans-Light.otf") format("opentype");
+    font-weight: 400;
 }
 @font-face {
-    font-family: 'SalmaBold';
+    font-family: 'Salma';
     src: url("./SalmaAlfasans\ SemiBold.otf") format("opentype");
+    font-weight: 700;
 }
 
 body {
   font-family: 'Salma';
+  margin: 0px;
 }
 
 h1, h3 {
   font-weight: 400;
 }
 
-.header {
-  margin-top: 17px;
-  margin-left: 5px;
+.bold {
+  font-weight: 700;
+}
+
+.header-container {
+  /* position: fixed; */
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  /* border-bottom: solid #eee 3px; */
+  background-color: #fff;
+  z-index: 5;
+}
+
+.header-left {
+  display: inline;
+  margin-left: 25px;
+}
+.header-right {
+  position: absolute;
+  display: inline;
+  right: 6px;
+}
+.header-text {
+  display: inline;
+  margin-right: 6px;
+  /* margin-top: 17px;
+  margin-left: 5px; */
   font-size: 13px;
 }
 
-.header.right {
-  float: right;
+.header-text.right {
+  display: block;
   text-align: right;
 }
 
-a {
+.content-container {
+  width: calc(100vw - 15px);
+  margin-left: 15px;
+  margin-bottom: 50px;
+}
+
+a:not(a:has(img)) {
   text-decoration-thickness: 2px;
   background-color: #eee;
   color: black;
 }
-a:not(.header.selected-page a) {
+a:not(a.selected-page) {
   text-decoration-line: none;
 }
 a:hover {
@@ -43,22 +77,22 @@ img:hover, image:hover {
 
 @media (max-width: 599px) {
   .desktop {
-    display: none;
+    display: none !important;
   }
 }
 @media (min-width: 600px) {
   .mobile {
-    display: none;
+    display: none !important;
   }
 }
 
 .border-container {
-  position:relative;
+  position: relative;
 }
 
 .border-container.title:before {
   border-color: #ccc;
-  top: 26px;
+  top: 0px;
   height: 24px;
 }
 
@@ -80,14 +114,18 @@ footer {
   border-top: solid #eee 3px;
   background-color: white;
   position: fixed;
-  left: -10px;
   bottom: 0;
   width: 100%;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding: 10px;
   text-align: center;
 }
 .side-margin {
   margin-right:3px;
   margin-left: 3px;
 }
+
+.social-image {
+  height: 20px;
+  margin-bottom: -5px;
+}
+

@@ -12,11 +12,13 @@
   <meta property="og:image" content="https://www.giacomomakes.art/images/windmap.PNG"/>
   <meta property="og:image:type" content="image/png"/>
   <meta name='viewport' content='initial-scale=1' />
+
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,bold" rel="stylesheet">
   <link href="./lib/globalstyles.css" rel="stylesheet" />
   <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
-  
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src=https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js></script>
 <style>
 
   a.no-decoration {
@@ -26,13 +28,18 @@
   }
 
   body {
-    display: inline-block;
-    margin-left: 15px;
-    margin-bottom: 40px;
+    margin-bottom: 30vh;
+    /* display: inline-block; */
   }
 
+  .animation,.no-animation {
+    position: relative;
+    /* height: 100%; */
+    width: 100%;
+    background-color: white;
+  }
   h3, p {
-    float: left;
+    /* float: left; */
   }
 
   h3 {
@@ -49,6 +56,25 @@
   h3 {
     font-size: 18pt;
   }
+
+  .header-container {
+    border-bottom: solid #eee 3px;
+    background-color: white;
+    position: fixed;
+    top: 0;
+  }
+
+  .scroll-instruction {
+    position: absolute;
+    width: 100%;
+    margin: 100px auto;
+    text-align: center;
+    /* background-color: #fff; */
+    font-weight: 700;
+    font-size: 20px;
+    z-index: 2;
+    text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+  }
   
   .title {
     margin-top: 0px;
@@ -56,7 +82,9 @@
   }
   
   .first-title {
-    margin-top: 25px;
+    position: relative;
+    margin-top: 100vh;
+    /* margin-top: 20px; */
   }
   
   p {
@@ -82,30 +110,30 @@
     font-size: 14pt;
   }
 
-  .container {
+  /* .container {
     clear: both;
     float: left;
-  }
+  } */
 
-  .flex-container {
+  /* .flex-container {
     display: flex;
     flex-direction: column;
-  }
+  } */
 
   .row {
     clear: both;
     display: flex;
     flex-direction: row;
-    max-width: 1100px;
+    /* max-width: 1100px; */
   }
 
   .row > * {
     margin: 10px;
     flex: 1 1 0;
   }
-  .row :first-child {
+  /* .row :first-child {
     flex: 1 1 0;
-  }
+  } */
 
   a:hover .overlay .text {
     text-decoration: underline;
@@ -134,14 +162,31 @@
     margin-top: 40px;
   }
 
-  .bold {
-    font-family: 'SalmaBold';
+  .quote-author {
+    display: block;
+    text-align: right;
   }
 
-  .social-image {
-    height: 20px;
-    margin-bottom: -5px;
+  .funky-animation {
+    position: relative;
+    height: calc(100vh - 130px);
   }
+  .word-container {
+    position: fixed;
+    top: 0%;
+    width: 100%;
+    margin: 0 auto;
+    height: calc(100vh - 130px);
+    text-align: center;
+  }
+  .word {
+    display: inline-block;
+    position: relative;
+    top: 50%;
+    font-weight: 700;
+  }
+
+
 
 </style>
 
@@ -149,162 +194,185 @@
 <script src="lib/d3.min.js"></script>
 
 <body>
-  <p class="header"><a href="/" >
-    Home
-  </a></p>
-  <p class="header selected-page"><a href="/data" >
-    Professional
-  </a></p>
-  <p class="header"><a href="/art" >
-    Art
-  </a></p>
-  <!-- <a href="." class="no-decoration">
-    <p style="font-size: 30px;">←</p>
-  </a> -->
-  <!-- <div class="row">
-    <p class="presvg">I find and communicate stories in data</p>
-  </div> -->
+  <div class="header-container">
+    <div class="header-left">
+      <a class="header-text" href="./" >
+        Home
+      </a>
+      <a class="header-text selected-page" href="./data" >
+        Professional
+      </a>
+      <a class="header-text" href="./art" >
+        Art
+      </a>
+    </div>
+    <div class="header-right">
+      <p class="header-text right desktop">Professional portfolio | Giacomo Boscaini-Gilroy</p>
+      <p class="header-text right mobile">Giacomo Boscaini-Gilroy<br>Professional portfolio</p>  
+    </div>
+  </div>
 
-  <p class="header right desktop">Professional portfolio | Giacomo Boscaini-Gilroy</p>
-  <p class="header right mobile">Giacomo Boscaini-Gilroy<br>Professional portfolio</p>
+  <div class="content-container">
 
-  <div class="container">
-    <div class="flex-container">
-      
-      <div class="border-container first-title">
-        <div class="row">
-          <div class="column">
-            <p>
-              <span class="bold">I find and show meaning in data</span>.
-              <br>
-              <br>I gather information, process and analyse it with tools like <span class="bold">Python, R or QGIS</span>.
-              <br>Once a message emerges and there is a story to be told,
-              <br>I sketch and iterate visual designs to explain it with beauty and clarity.
-              <br>I build for the web in JavaScript, often with <span class="bold">Svelte, D3 and Mapbox</span>.
-            </p>
+    <div class="scroll-instruction">Scroll down!</div>
+
+    <div class="bold funky-animation">
+      <!-- <div class="word">I</div>
+      <div class="word">find</div> 
+      <div class="word">and</div> 
+      <div class="word">show</div> 
+      <div class="word">meaning</div> 
+      <div class="word">in</div> 
+      <div class="word">data.</div> -->
+    </div>
+    <div class="word-container">
+      <div class="word">I</div> <div class="word">f</div><div class="word">i</div><div class="word">n</div><div class="word">d</div> <div class="word">a</div><div class="word">n</div><div class="word">d</div> <div class="word">s</div><div class="word">h</div><div class="word">o</div><div class="word">w</div> <div class="word">m</div><div class="word">e</div><div class="word">a</div><div class="word">n</div><div class="word">i</div><div class="word">n</div><div class="word">g</div> <div class="word">i</div><div class="word">n</div> <div class="word">d</div><div class="word">a</div><div class="word">t</div><div class="word">a</div><div class="word">.</div>
+    </div>
+
+      <!-- <div class="no-animation">
+        <div class="border-container first-title">
+          <div class="row">
+            <div class="column">
+              <p>
+                I gather information, process and analyse it with tools like <span class="bold">Python, R or QGIS</span>.
+                <br>I formulate beautiful and engaging stories in JavaScript, often with <span class="bold">Svelte, D3 and Mapbox</span>.
+                <br>
+                <br>Get in touch for freelance projects!
+              </p>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+      <div class="animation-container">
+        <div class="border-container first-title">
+          <h3>Recent projects</h3>
+          <p>Since 2023</p>
+        </div>
+        
+        <div class="border-container">
+          <div class="row">
+            <div class="column">
+              <p>
+                <em>
+                  "Giacomo went above and beyond in the final weeks of <a href="https://blackvoicenews.com/2023/11/15/citing-web-content-in-an-age-of-misinformation/">the project</a>
+                  to troubleshoot last minute issues in time for a hard publishing deadline, and fulfilled all expectations and requirements
+                  for the project precisely and independently."
+                </em>
+                <strong class="quote-author">- Lindsay Walker, <a href="https://www.starlinglab.org/">Starling Lab for Data Integrity</a> (Stanford & USC)</strong>
+              </p>    
+            </div>
+          </div>
+          <div id="freelance"></div>
+        </div>
+      </div>
+
+      <div class="animation">
+        <div class="border-container title">
+          <h3>New Statesman Media Group and GlobalData plc</h3>
+          <p>2022 to 2023</p>
+        </div>
+        
+        <div class="border-container">
+          <div class="row">
+            <div class="column">
+              <p>I developed visuals in collaboration with journalists
+                <br>plus pitched and wrote stories myself.
+                <br><a href="https://www.newstatesman.com/author/giacomoboscainigilroy">My <em>New Statesman</em> author page.</a>
+              </p>
+            </div>
+          </div>
+
+          <div id="ns"></div>
+        </div>
+      </div>
+
+      <div class="animation">
+        <div class="border-container title">
+          <h3>Office for National Statistics</h3>
+          <p>2019 to 2022</p>
+        </div>
+
+        <div class="border-container">
+          <div class="row">
+            <div class="column">
+              <p>As part of the data visualisation team
+                <br>I communicated the stories in government figures
+                <br>to the public.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="border-container">
+          <div class="row">
+            <div class="column">
+              <p>I made statistics accessible with engaging interactive content...</p>
+            </div>
+          </div>
+
+          <div id="ons-collaborate"></div>
+        </div>
+      </div>
+
+      <div class="animation">
+        <div class="border-container">
+          <div class="row">
+            <div class="column">
+              <p>...and clear, well-explained graphs.</p>
+            </div>
+          </div>
+
+          <div id="ons-improve"></div>
+        </div>
+
+        <div class="border-container">
+          <div class="row">
+            <div class="column">
+              <p>
+                In 2021 I was a named author on
+                <a href="https://www.thelancet.com/journals/lanres/article/PIIS2213-2600(21)00414-8/fulltext">a paper in the Lancet</a>
+                for my work on the graphic within.
+              </p>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="border-container title">
-        <h3>Recent projects</h3>
-        <p>Since 2023</p>
-      </div>
-      
-      <div class="border-container">
-        <div class="row">
-          <div class="column">
-            <p>
-              <em>
-                "Giacomo went above and beyond in the final weeks of <a href="https://blackvoicenews.com/2023/11/15/citing-web-content-in-an-age-of-misinformation/">the project</a>
-                 to troubleshoot last minute issues in time for a hard publishing deadline, and fulfilled all expectations and requirements
-                for the project precisely and independently."
-              </em>
-              <span class="bold" style="float:right;">- Lindsay Walker, <a href="https://www.starlinglab.org/">Starling Lab for Data Integrity</a> (Stanford & USC)</span>
-            </p>    
-          </div>
-        </div>
-        <div id="freelance"></div>
-      </div>
 
-      <div class="border-container title">
-        <h3>New Statesman Media Group and GlobalData plc</h3>
-        <p>2022 to 2023</p>
-      </div>
-      
-      <div class="border-container">
-        <div class="row">
-          <div class="column">
-            <p>I developed visuals in collaboration with journalists
-              <br>plus pitched and wrote stories myself.
-              <br><a href="https://www.newstatesman.com/author/giacomoboscainigilroy">My <em>New Statesman</em> author page.</a>
-            </p>
+      <div class="animation">
+        <div class="border-container title">
+          <div>
+            <h3>Automated Factchecking</h3>
+            <p>2016 to 2019</p>
           </div>
         </div>
 
-        <div id="ns"></div>
-      </div>
-
-      <div class="border-container title">
-        <h3>Office for National Statistics</h3>
-        <p>2019 to 2022</p>
-      </div>
-
-      <div class="border-container">
-        <div class="row">
-          <div class="column">
-            <p>As part of the data visualisation team
-              <br>I communicated the stories in government figures
-              <br>to the public.</p>
+        <div class="border-container">
+          <div class="row">
+            <div class="column">
+              <p>
+                Previously I was a data scientist
+                <br>applying Natural Language Processing
+                <br>to the domain of factchecking.
+              </p>
+            </div>
           </div>
-        </div>
-
-      </div>
-
-      <div class="border-container">
-        <div class="row">
-          <div class="column">
-            <p>I made statistics accessible with engaging interactive content...</p>
+          <div class="row">
+            <div class="column">
+              <p>
+                In 2019 I presented research at SIGIR conference:
+                <br><a href="https://arxiv.org/pdf/1907.02030.pdf">Real-time Claim Detection from News Articles and Retrieval of Semantically-Similar Factchecks</a>
+              </p>
+            </div>
           </div>
-        </div>
-
-        <div id="ons-collaborate"></div>
-      </div>
-
-      <div class="border-container">
-        <div class="row">
-          <div class="column">
-            <p>...and clear, well-explained graphs.</p>
-          </div>
-        </div>
-
-        <div id="ons-improve"></div>
-      </div>
-
-      <div class="border-container">
-        <div class="row">
-          <div class="column">
-            <p>
-              In 2021 I was a named author on
-              <a href="https://www.thelancet.com/journals/lanres/article/PIIS2213-2600(21)00414-8/fulltext">a paper in the Lancet</a>
-              for my work on the graphic within.
-            </p>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="border-container title">
-        <div>
-          <h3>Automated Factchecking</h3>
-          <p>2016 to 2019</p>
-        </div>
-      </div>
-
-      <div class="border-container">
-        <div class="row">
-          <div class="column">
-            <p>
-              Previously I was a data scientist
-              <br>applying Natural Language Processing
-              <br>to the domain of factchecking.
-            </p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="column">
-            <p>
-              In 2019 I presented research at SIGIR conference:
-              <br><a href="https://arxiv.org/pdf/1907.02030.pdf">Real-time Claim Detection from News Articles and Retrieval of Semantically-Similar Factchecks</a>
-            </p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="column">
-            <p>
-              In 2017 I was <a href="https://medium.com/google-news-lab/the-google-news-lab-fellowship-expands-in-europe-517bdfb1a76b">a Google News Lab Fellow</a>
-              <br>ať Full Fact.
-            </p>
+          <div class="row">
+            <div class="column">
+              <p>
+                In 2017 I was <a href="https://medium.com/google-news-lab/the-google-news-lab-fellowship-expands-in-europe-517bdfb1a76b">a Google News Lab Fellow</a>
+                <br>ať Full Fact.
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -449,9 +517,11 @@
     function addContent(selector, data) {
       var container = d3.select(selector);
 
-      var chunkSize = Math.min(4,Math.floor(window.innerWidth/200));
+      var chunkSize = Math.max(2,Math.floor(window.innerWidth/250));
+      // var chunkSize = Math.min(4,Math.floor(window.innerWidth/200));
 
       var chunked = chunk(data, chunkSize);
+      console.log(chunked);
 
       var entries = container.selectAll("#somethingthatdoesnotexist")
           .data(chunked)
@@ -483,8 +553,87 @@
         var R = [];
         for (var i = 0; i < arr.length; i += chunkSize)
           R.push(arr.slice(i, i + chunkSize));
-        while (R[R.length-1].length < chunkSize)
-            R[R.length-1].push([]);
+        while (R[R.length-1].length < chunkSize) // fill up incomplete rows
+            R[R.length-1].push({});
         return R;
     }
+
+    // Scrolly animation !
+    let elements = gsap.utils.toArray('.animation');
+    elements.forEach((element,i) => {
+
+      gsap.from(element, {
+        duration: 1,
+        x: "-100vw",
+        scrollTrigger: {
+          trigger: element,
+          start: "top 70%",
+          end: "top 60%",
+          scrub: 1,
+          // markers: true
+        },
+        // y: "50vh",
+      });
+
+    });
+
+    // move in individual letters
+    let words = gsap.utils.toArray('.word');
+    words.forEach((element,i) => {
+      gsap.from(element, {
+        duration: 5,
+        x: Math.random()*80-40 + "vw",
+        y: Math.random()*80-40 + "vh",
+        rotation: Math.random()*360-180,
+        scrollTrigger: {
+          trigger: '.funky-animation',
+          start: 'top 60px',
+          end: 'bottom top',
+          scrub: 2,
+        }
+      })
+    })
+
+    // fade out words
+    gsap.to('.word-container', {
+      opacity: 0,
+      scrollTrigger: {
+        trigger: '.first-title',
+        start: "top 60%",
+        end: "+=10%",
+        scrub: true,
+      }
+    })
+
+    // gsap.from('.animation', {
+    //     y: "100vh",
+    //     stagger: 1,
+        
+    //     scrollTrigger: {
+    //       trigger: '.animation-container',
+    //       start: "top top",
+    //       end: 15000,
+    //       scrub: true,
+    //       pin: true
+    //     }
+    //   }
+    // );
+
+    // let elements = gsap.utils.toArray('.animation');
+    //   elements.forEach((element,i) => {
+
+    //   gsap.to(element, {
+    //     id: i,
+    //     scrollTrigger: {
+    //       trigger: element,
+    //       start: "top bottom",
+    //       end: "top center",
+    //       scrub: 1,
+    //       markers: true,
+    //       pinnedContainer: '.animation-container'
+    //     },
+    //     y:-500,
+    //   });
+    // });
+
 </script>
