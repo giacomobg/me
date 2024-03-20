@@ -55,7 +55,6 @@
 
 <body>
   <h1>Giacomo Boscaini-Gilroy</h1>
- <p>Pick a path</p>
   <svg id="paths">
   </svg>
 </body>
@@ -90,7 +89,7 @@
   data.forEach(function(item, i) { moveCircleToStartByNum(i); });
   repeat();
   setInterval(repeat, 2000);
-  addSvgMouseBehaviour();
+  // addSvgMouseBehaviour();
 
 
   function createButtons() {
@@ -118,7 +117,7 @@
       .attr("x", function(d) { return d.x + svgMidpoint - rectWidth/2})
       .attr("y", 270)
       .attr("width", rectWidth)
-      .attr("height", 0)
+      // .attr("height", 0)
       .attr("href", function(d) { return d.image })
       .attr("preserveAspectRatio", "xMidYMax slice") // xMidYMin can work too
       // .attr("fill", function(d,i) { return "url(#img" + i + ")" } );

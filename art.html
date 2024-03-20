@@ -28,11 +28,12 @@
     margin-bottom: 60px;
   }
 
-  p {
+  /* p {
     float: left;
-  }
+  } */
 
   p {
+    width: 100%;
     margin-top: 0px;
     font-size: 12pt;
   }
@@ -78,23 +79,6 @@
     alignment-baseline: middle;
   }
 
-  .overlay {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    width: 100%;
-    opacity: 0;
-    transition: .5s ease;
-    background-color: #e8e7ba;
-  }
-
-  a:hover .overlay {
-    opacity: 0.8;
-  }
-
   .text {
     /* color: white; */
     font-size: 14px;
@@ -112,6 +96,15 @@
   img {
     max-height: calc(100vh - 130px);
     object-fit: contain;
+  }
+  img:hover {
+    opacity: 1 !important;
+  }
+
+  .series-title {
+    /* display:block; */
+    /* text-align: right; */
+    font-weight: 700;
   }
 
 </style>
@@ -154,7 +147,11 @@
       <div class="border-container">
         <div class="row">
           <div class="column">
-            <p>I capture the energy of eerie dark urban spaces.
+            <p>
+              <span class="series-title">City living</span>
+              <br>
+              <br>
+            I always find myself capturing the energy of a place.
               <br>Locations that despite being incongruously devoid of people
               <br>are bursting full of the life within them.
             </p>
@@ -198,6 +195,52 @@
         </div>
       </div>
 
+      <div class="border-container">
+        <div class="row">
+          <div class="column">
+            <p>
+              <span class="series-title">Industrial nostalgia</span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="column photo">
+          <a href="images/batterseapowerstation.jpg">
+            <div class="img-container">
+              <img src="images/batterseapowerstation.jpg" width="100%">
+            </div>
+          </a>
+        </div>
+        <div class="column photo">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="column photo">
+        </div>
+        <div class="column photo">
+          <a href="images/walworthchimney.jpg">
+            <div class="img-container">
+              <img src="images/walworthchimney.jpg" width="100%">
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="column photo">
+          <a href="images/westonparade.jpg">
+            <div class="img-container">
+              <img src="images/westonparade.jpg" width="100%">
+            </div>
+          </a>
+        </div>
+        <div class="column photo">
+        </div>
+      </div>
+      
       <div class="border-container">
         <div class="row">
           <div class="column">
