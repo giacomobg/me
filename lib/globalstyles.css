@@ -56,7 +56,7 @@ h1, h3 {
 }
 
 .content-container {
-  width: calc(100vw - 15px);
+  width: calc(100vw - 30px);
   margin-left: 15px;
   margin-bottom: 50px;
 }
